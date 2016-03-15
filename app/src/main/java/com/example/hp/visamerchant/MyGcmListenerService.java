@@ -13,10 +13,22 @@ import android.util.Log;
 
 import com.google.android.gms.gcm.GcmListenerService;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Array;
+
 /**
  * Created by hp on 13-03-2016.
  */
 public class MyGcmListenerService extends GcmListenerService {
+
+    JSONObject ob;
+    JSONObject ob1;
+    String score;
+
+    String message="hello";
+
 
     private static final String TAG = "MyGcmListenerService";
 
@@ -30,7 +42,105 @@ public class MyGcmListenerService extends GcmListenerService {
     // [START receive_message]
     @Override
     public void onMessageReceived(String from, Bundle data) {
-        String message = data.getString("message");
+
+
+       String p= data.toString();
+        // Bundle[{message=Manual push notification from Rajkumar, collapse_key=do_not_collapse}]
+
+        String content = p.split("=")[1];
+        String msg = content.split(",")[0];
+
+
+
+
+
+
+
+
+
+    /* String dat=   data.getString("data");
+
+        try {
+            ob=new JSONObject(dat);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            score=ob.get("message").toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }*/
+
+
+      /*  try {
+            ob=new JSONObject( data.getString("data"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            score=   ob.get("message").toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }*/
+
+/*        ob=new JSONObject(data);
+
+        try {
+             ob=new JSONObject("data");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            ob1= ob.getJSONObject("data");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            score=  ob1.get("message").toString();
+        } catch (JSONException e) {
+
+        //
+       // String message = data.getString("data");
+
+
+
+
+
+
+       /* try {
+            ob=new JSONObject(message);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            ob1= ob.getJSONObject("data");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            score=ob1.get("score").toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }*/
+
+
+        // message.get
+        //  String message1=  message.getString("score");
+
+        NotificationManager notificationManager= (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("Test")
+                .setContentText(msg);
+        notificationManager.notify(1, mBuilder.build());
+
+
+
+
         Log.d(TAG, "From: " + from);
         Log.d(TAG, "Message: " + message);
 
@@ -52,7 +162,7 @@ public class MyGcmListenerService extends GcmListenerService {
          * In some cases it may be useful to show a notification indicating to the user
          * that a message was received.
          */
-        sendNotification(message);
+        //  sendNotification(message);
         // [END_EXCLUDE]
     }
     // [END receive_message]

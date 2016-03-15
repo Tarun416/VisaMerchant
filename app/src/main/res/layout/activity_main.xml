@@ -81,6 +81,7 @@
 
 
     <EditText
+        android:inputType="number"
         android:id="@+id/contactnameedit"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -91,6 +92,7 @@
 
 
     <TextView
+        android:inputType="number"
         android:id="@+id/AccountNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -104,6 +106,7 @@
 
 
     <EditText
+        android:inputType="number"
         android:id="@+id/accountnameedit"
         android:layout_width="200dp"
         android:layout_height="wrap_content"

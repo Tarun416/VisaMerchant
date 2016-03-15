@@ -1,6 +1,7 @@
 package com.example.hp.visamerchant;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Point;
@@ -22,6 +23,7 @@ import org.w3c.dom.Text;
  * Created by hp on 13-03-2016.
  */
 public class HomeActivity extends AppCompatActivity {
+    SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +33,16 @@ public class HomeActivity extends AppCompatActivity {
         String str = getIntent().getStringExtra("msg");
 
         // Get Email ID from Shared preferences
-        SharedPreferences prefs = getSharedPreferences("UserDetails",
+         prefs = getSharedPreferences("UserDetails",
                 Context.MODE_PRIVATE);
         String fullname = prefs.getString("fullname", "");
         String accno= prefs.getString("accountno", "");
+        TextView name = (TextView) findViewById(R.id.hello);
+        TextView account = (TextView) findViewById(R.id.mvisa);
+
         // Set Title
-       TextView name = (TextView) findViewById(R.id.name);
-        TextView account = (TextView) findViewById(R.id.acc);
+       /*TextView name = (TextView) findViewById(R.id.name);
+        TextView account = (TextView) findViewById(R.id.acc);*/
         ImageView iv=(ImageView)findViewById(R.id.barcode);
 
 
@@ -52,9 +57,9 @@ public class HomeActivity extends AppCompatActivity {
         smallerDimension = smallerDimension * 3/4;
 
         //Encode with a QR Code image
-        QRCodeEncoder qrCodeEncoder = new QRCodeEncoder("4123640062698797",
+        QRCodeEncoder qrCodeEncoder = new QRCodeEncoder("ID-Code123",
                 null,
-                Contents.Type.CONTACT,
+                Contents.Type.TEXT,
                 BarcodeFormat.QR_CODE.toString(),
                 smallerDimension);
         try {
@@ -69,8 +74,8 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-        name.setText( fullname + " !");
-        account.setText(accno);
+        name.setText("Hello"+" "+fullname + " !");
+        account.setText("Your mVisa Id :"+""+accno);
         // When Message sent from Broadcase Receiver is not empty
         if (str != null) {
 
@@ -92,6 +97,14 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        this.finish();
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -102,6 +115,15 @@ public class HomeActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+
+        if(id==R.id.logout)
+        {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.clear();
+            editor.commit();
+            Intent i=new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);

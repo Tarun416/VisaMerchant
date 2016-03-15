@@ -1,6 +1,7 @@
 package com.example.hp.visamerchant;
 
 import android.app.IntentService;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,6 +18,8 @@ import java.io.IOException;
  * Created by hp on 13-03-2016.
  */
 public class RegistrationIntentService extends IntentService {
+
+//    ProgressDialog pd=new ProgressDialog(getApplicationContext());
 
     private static final String TAG = "RegIntentService";
     private static final String[] TOPICS = {"global"};
@@ -60,7 +63,11 @@ public class RegistrationIntentService extends IntentService {
 
             editor.commit();
 
+            subscribeTopics(token);
+
             sendRegistrationToServer(token);
+
+
 
 
 
@@ -90,6 +97,10 @@ public class RegistrationIntentService extends IntentService {
      * @param token The new token.
      */
     private void sendRegistrationToServer(String token) {
+
+        //pd.hide();
+
+
 
 
         Intent i = new Intent(getApplicationContext(), HomeActivity.class);

@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         pd=new ProgressDialog(this);
         pd.setMessage("Please Wait");
+       // pd.show();
         pd.setCancelable(false);
         SharedPreferences prefs=getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
      String regid=   prefs.getString("regId","");
@@ -54,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         registerb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                pd.show();
 
                 if(!TextUtils.isEmpty(accountNo.getText().toString())&&!TextUtils.isEmpty(contactNo.getText().toString())&&!TextUtils.isEmpty(fullname.getText().toString()) )
                 {
@@ -106,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main1, menu);
         return true;
     }
 
@@ -121,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+
+
 
         return super.onOptionsItemSelected(item);
     }

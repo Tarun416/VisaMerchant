@@ -1,14 +1,14 @@
 {
   "project_info": {
-    "project_id": "visamerchant-a7eed",
-    "project_number": "176136658791",
-    "name": "VisaMerchant"
+    "project_id": "merchantapp-55d21",
+    "project_number": "108539994901",
+    "name": "MerchantApp"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:176136658791:android:ff92fc55879b7edb",
-        "client_id": "android:com.example.visamerchant",
+        "mobilesdk_app_id": "1:108539994901:android:bef611e6daeeecc6",
+        "client_id": "android:com.example.hp.visamerchant",
         "client_type": 1,
         "android_client_info": {
           "package_name": "com.example.hp.visamerchant",

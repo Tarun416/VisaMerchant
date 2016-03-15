@@ -10,27 +10,16 @@
     <TextView
         android:layout_marginTop="100dp"
         android:id="@+id/hello"
-        android:layout_marginLeft="100dp"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello"
+        android:text="Hello Tarun!"
+        android:layout_centerHorizontal="true"
         android:textStyle="bold"
 
         android:textSize="20dp"
         />
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tarun !"
-        android:layout_marginLeft="5dp"
-        android:textStyle="bold"
-        android:layout_toRightOf="@+id/hello"
-        android:layout_alignBaseline="@+id/hello"
-
-        android:textSize="20dp"
-        />
 
 
 
@@ -40,9 +29,10 @@
         android:layout_below="@+id/hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your mVISA Id :"
+        android:text="Your mVISA Id : 45563633737"
        
         android:textStyle="bold"
+        android:layout_centerHorizontal="true"
        
         android:layout_marginTop="34dp"
        
@@ -50,22 +40,15 @@
         android:textSize="20dp"
         />
     
-    <TextView
-        android:id="@+id/acc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4557737837899937"
-        android:layout_toRightOf="@+id/mvisa"
-        android:layout_alignBaseline="@+id/mvisa"
-        android:layout_marginLeft="5dp"
-        android:textSize="20dp"
-        android:textStyle="bold"/>
+
 
 
     <ImageView
+        android:layout_marginTop="27dp"
+        android:layout_centerHorizontal="true"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_below="@+id/acc"
+        android:layout_below="@+id/mvisa"
         android:id="@+id/barcode"/>
 
 
@@ -74,7 +57,7 @@
         android:id="@+id/notification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/acc"
+        android:layout_below="@+id/barcode"
         android:layout_centerHorizontal="true"
         android:text="Notification"
         android:layout_marginTop="30dp"
